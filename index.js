@@ -1,11 +1,13 @@
 import dotenv from "dotenv";
 import express from "express";
 import axios from 'axios';
+import cors from 'cors';
 dotenv.config()
 const app = express()
 const port = process.env.PORT || 3001;
 const client_id = process.env.client_id
 const bearer = process.env.bearer
+app.use(cors())
 app.get('/', (req, res) => {
   res.send(`<h1>gamelist:</h1><br/><h2>/gamelist/{platform}/{rating}/{amount}</h2>`)
 })
