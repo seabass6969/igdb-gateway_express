@@ -7,7 +7,11 @@ const app = express()
 const port = process.env.PORT || 3001;
 const client_id = process.env.client_id
 const bearer = process.env.bearer
-app.use(cors())
+var corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+app.use(cors(corsOptions))
 app.get('/', (req, res) => {
   res.send(`<h1>gamelist:</h1><br/><h2>/gamelist/{platform}/{rating}/{amount}</h2>`)
 })
